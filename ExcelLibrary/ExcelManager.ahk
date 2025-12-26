@@ -28,7 +28,7 @@
  * 
  * @author bitasuperactive
  * @date 25/12/2025
- * @version 0.9.1-Beta
+ * @version 0.9.2-Beta
  * @warning Dependencias:
  * - ExcelEventController.ahk
  * - WorkbookWrapper.ahk
@@ -359,8 +359,8 @@ class ExcelManager
      * Ejecuta y/u obtiene el COM del proceso activo de Microsoft Excel
      * y conecta el manejador de eventos para su aplicación.
      * 
-     * @note Si se requiere ejecutar Microsoft Excel, esperará hasta `60` segundos tras lanzarlo
-     * para que acepte la conexión y permita el acceso a su interfaz COM.
+     * @note Si se requiere ejecutar Microsoft Excel, minimizará temporalmente su ventana para 
+     * forzar la creación del COM (no entiendo por qué funciona así).
      * 
      * @returns {ComObject} Common Object Model para la instancia activa de Microsoft Excel.
      * @throws {TargetError} Si no ha sido posible iniciar Microsoft Excel automáticamente.
@@ -368,36 +368,49 @@ class ExcelManager
      */
     static _GetExcelCOM()
     {
-        if (!ProcessExist("EXCEL.EXE")) {
-            try Run("EXCEL")
+        if (!ProcessExist("EXCEL.EXE") || WinGetCount("ahk_class XLMAIN") = 0) {  ; Ventana activa de Excel
+            try Run("EXCEL.EXE")
             catch Error as err
-                throw TargetError("No ha sido posible iniciar Microsoft Excel automáticamente.", -1, err)
+                throw TargetError("No ha sido posible iniciar Microsoft Excel automáticamente, ábrelo y crea un libro en blanco.", -1, err)
 
-            ;// Esperar hasta 60 segundos para completar la conexión
-            Loop 60 {
+            ;// Esperar hasta 10 segundos para completar la conexión
+            Loop 10 {
                 try {
-                    if (WinGetCount("ahk_class XLMAIN") > 0) {  ; Ventana activa de Excel
-                        excelCOM := ComObjActive("Excel.Application")
+                    excelCOM := ComObjActive("Excel.Application")
 
-                        ;// Crear un libro en blanco si el usuario no lo ha creado ya
-                        if (excelCOM.Workbooks.Count = 0) {
-                            excelCOM.Workbooks.Add()
-                        }
-
-                        ComObjConnect(excelCOM, ExcelEventController.ApplicationEventHandler)
-                        return excelCOM
+                    ;// Crear un libro en blanco
+                    if (excelCOM.Workbooks.Count = 0) {
+                        excelCOM.Workbooks.Add()
                     }
+
+                    ComObjConnect(excelCOM, ExcelEventController.ApplicationEventHandler)
+                    WinRestore("ahk_class XLMAIN")
+                    return excelCOM
                 }
-                Sleep 1000
+                catch {
+                    ;// Hay veces en que a Excel no le apetece crear su interfaz COM y hay que maniobrar...
+                    if (WinGetCount("ahk_class XLMAIN") > 0) {
+                        if (WinGetMinMax("ahk_class XLMAIN") != -1) {
+                            ;// Forzar creación del COM, minimizando...
+                            WinMinimize("ahk_class XLMAIN")
+                        } else {
+                            ;// Forzar creación de un libro en blanco
+                            WinActivate("ahk_class XLMAIN")
+                            WinWaitActive("ahk_class XLMAIN")
+                            Send "{Escape}"
+                        }
+                    }
+                    Sleep 1000
+                }
             }
         }
 
         try {
             excelCOM := ComObjActive("Excel.Application")
-            ComObjConnect(excelCOM, ExcelEventController.ApplicationEventHandler)
-
-            ;// Crear un libro en blanco si el proceso quedó activo sin ventanas
-            if (WinGetCount("ahk_class XLMAIN") = 0) {
+            ComObjConnect(excelCOM, ExcelEventController.ApplicationEventHandler)            ;// Crear un libro en blanco si el proceso quedó activo sin ventanas
+            
+            ;// Asegurarse de que exista un libro creado
+            if (excelCOM.Workbooks.Count = 0) {
                 excelCOM.Workbooks.Add()
             }
             
@@ -405,7 +418,7 @@ class ExcelManager
         } 
         catch Error as err {
             if (InStr(err.Message, "0x800401E3")) ; Excel no está iniciado
-                throw TargetError("(0x800401E3) No ha sido posible iniciar Microsoft Excel automáticamente.", -1, err)
+                throw TargetError("(0x800401E3) No ha sido posible iniciar Microsoft Excel automáticamente, ábrelo y crea un libro en blanco.", -1, err)
             if (InStr(err.Message, "0x80004002")) ; Excel ha rechazado la conexión
                 throw Error("(0x80004002) Excel ha rechazado la conexión a su interfaz.", -1, err)
             throw err
