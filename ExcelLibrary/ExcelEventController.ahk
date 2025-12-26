@@ -2,31 +2,26 @@
 #Include "..\Util\EventController.ahk"
 #Include "..\Util\ProcessWMI.ahk"
 
-/**
- * @internal
- * CAMBIOS PARA LA 0.9.1-Beta
- * - Refactorización del EventController para facilitar el acceso a la
- * definición de eventos. Corrigiendo la encapsulación.
- */
-
 /************************************************************************
  * @brief 
  * Controlador para los eventos de Microsoft Excel.
  * 
- * Cada manejador de eventos se debe conectar con el ComObject correspondiente
- * de Microsoft Excel mediante ComObjConnect.
+ * Cada manejador de eventos se debe conectar con el ComObject 
+ * correspondiente de Microsoft Excel mediante `ComObjConnect`.
  * 
- * Los parámetros para los callbacks serán equivalentes a los EventHandlers de
- * Microsoft.Office.Interop.Excel, añadiendo el objeto llamante "this" como primer parámetro.
- * Y están documentados en los enumeradores de eventos.
+ * Los parámetros para los callbacks serán equivalentes a los EventHandlers 
+ * de `Microsoft.Office.Interop.Excel`, añadiendo el objeto llamante "this" 
+ * como primer parámetro. Estos están documentados en los enumeradores de eventos.
  * 
  * @author bitasuperactive
- * @date 17/12/2025
- * @version 0.9.0-Beta
- * @see null
- * @requires EventController.ahk
- * @requires ProcessWMI.ahk
- * @note Faltan numerosos eventos por implementar, pero los más importantes ya están cubiertos.
+ * @date 25/12/2025
+ * @version 0.9.1-Beta
+ * @warning Dependencias:
+ * - EventController.ahk
+ * - ProcessWMI.ahk
+ * @note Faltan numerosos eventos por implementar, pero los más importantes 
+ * están cubiertos.
+ * @see https://github.com/bitasuperactive/ahk2-excel-library/blob/master/ExcelLibrary/ExcelEventController.ahk
  ***********************************************************************/
 class ExcelEventController
 {
@@ -44,48 +39,49 @@ class ExcelEventController
     /**
      * @public
      * Manejador de eventos para la aplicación de Microsoft Excel.
-     * @see https://learn.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.application?view=excel-pia#events
+     * @see ApplicationEventEnum
      */
     static ApplicationEventHandler => this._applicationHandler ;
 
     /**
      * @public
      * Manejador de eventos para un libro de trabajo especifico.
-     * @see https://learn.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.workbook?view=excel-pia#events
+     * @see WorkbookEventEnum
      */
     static WorkbookEventHandler => this._workbookHandler ;
 
     /**
      * @public
      * Manejador de eventos para una hoja de cálculo especifica.
-     * @see https://learn.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.worksheet?view=excel-pia#events
+     * @see WorksheetEventEnum
      */
-    static WorksheetEventHandler => this._worksheetHandler ;
+    static WorksheetEventHandler => this._worksheetHandler  ;
 
+    /** @private */
     static __New()
     {
-        OnExit((*) => this._Dispose()) ;// Se debe implementar así para no perder la referencia al objeto
+        OnExit((*) => this._Dispose())
     }
 
     /**
      * @public
-     * Delega la llamada a EventController::OnEvent.
+     * Delega la llamada a `EventController::OnEvent`.
      * @copydoc EventController::OnEvent
      */
     static OnEvent(name, callback) => this._controller.OnEvent(name, callback) ;
     
     /**
      * @public
-     * Delega la llamada a EventController::Trigger.
+     * Delega la llamada a `EventController::Trigger`.
      * @copydoc EventController::Trigger
      */
     static Trigger(name, params*) => this._controller.Trigger(name, params*) ;
 
     /**
-     * @protected
+     * @public
      * Crea un evento único para detectar la ejecución y el cierre del proceso Microsoft Excel.
      * 
-     * (!) Si se establece antes de iniciar el proceso, el evento se dispará dando a entender 
+     * @warning Si se establece antes de iniciar el proceso, el evento se dispará dando a entender 
      * erróneamente que ha finalizado.
      */
     static SetupOnApplicationStateChangedEvent()
@@ -101,10 +97,19 @@ class ExcelEventController
     }
 
     /**
+     * @public
+     * Desecha todos los eventos configurados.
+     */
+    static DisposeEvents()
+    {
+        this._controller.Dispose()
+    }
+
+    /**
      * @private
      * Ocurre al iniciar o finalizar el proceso de Microsoft Excel.
      * 
-     * - El proceso de Excel no finalizará tras cerrar todas sus ventanas si su COM no es liberado.
+     * @note El proceso de Excel no finalizará tras cerrar todas sus ventanas si su COM no es liberado.
      * 
      * @param {Boolean} executed Verdadero si Excel ha sido ejecutado, Falso si ha sido finalizado.
      */
@@ -116,19 +121,13 @@ class ExcelEventController
     }
 
     /**
-     * Elimina todos los eventos y manejadores registrados.
-     */
-    static DisposeEvents()
-    {
-        this._controller.Dispose()
-    }
-
-    /**
-     * Desecha al escuchador del proceso de Microsoft Excel.
+     * @private
+     * Desecha todos los eventos configurados, incluyendo al escuchador de Microsoft Excel.
      */
     static _Dispose()
     {
         try this._applicationWatcher.Dispose()
+        try this._applicationWatcher := unset
         this.DisposeEvents()
     }
 
@@ -141,14 +140,20 @@ class ExcelEventController
         /**
          * Nombre para el evento que ocurre cuando el proceso de Microsoft Excel es ejecutado.
          * 
-         * El callback no debe implementar parámetros.
+         * Para que el evento sea desencadenado, se debe establecer previamente el manejador mediante 
+         * `SetupOnApplicationStateChangedEvent`.
+         * 
+         * El `callback` no debe implementar parámetros.
          */
         static APPLICATON_EXECUTED := "APPLICATON_EXECUTED" ;
         
         /**
          * Nombre para el evento que ocurre cuando el proceso de Microsoft Excel es finalizado.
          * 
-         * El callback no debe implementar parámetros.
+         * Para que el evento sea desencadenado, se debe establecer previamente el manejador mediante 
+         * `SetupOnApplicationStateChangedEvent`.
+         * 
+         * El `callback` no debe implementar parámetros.
          */
         static APPLICATON_TERMINATED := "APPLICATON_TERMINATED" ;
         
@@ -156,7 +161,7 @@ class ExcelEventController
          * @public
          * Nombre para el evento que ocurre al crear un nuevo libro de trabajo.
          * 
-         * El callback debe implementar los siguientes parámetros:
+         * El `callback` debe implementar los siguientes parámetros:
          * @param {Object} caller Referencia al objeto llamante.
          * @param {Microsoft.Office.Interop.Excel.Workbook} workbook Libro de trabajo emisor del evento.
          * @param {Microsoft.Office.Interop.Excel.Application} application Microsoft Excel COM.
@@ -169,7 +174,7 @@ class ExcelEventController
          * 
          * Si previamente existe un único libro en blanco, Excel lo cerrará tras unos milisegundos.
          * 
-         * El callback debe implementar los siguientes parámetros:
+         * El `callback` debe implementar los siguientes parámetros:
          * @param {Object} caller Referencia al objeto llamante.
          * @param {Microsoft.Office.Interop.Excel.Workbook} workbook Libro de trabajo emisor del evento.
          * @param {Microsoft.Office.Interop.Excel.Application} application Microsoft Excel COM.
@@ -180,7 +185,7 @@ class ExcelEventController
          * @public
          * Nombre para el evento que ocurre cuando el usuario intenta cerrar cualquier libro de trabajo.
          * 
-         * El callback debe implementar los siguientes parámetros:
+         * El `callback` debe implementar los siguientes parámetros:
          * @param {Object} caller Referencia al objeto llamante.
          * @param {VarRef<Boolean>} cancel Falso por defecto. Si se establece en Verdadero, 
          * no se permitirá el cierre del libro de trabajo.
@@ -194,7 +199,7 @@ class ExcelEventController
          * @public
          * Nombre para el evento que ocurre tras finalizar el guardado de cualquier libro de trabajo.
          * 
-         * El callback debe implementar los siguientes parámetros:
+         * El `callback` debe implementar los siguientes parámetros:
          * @param {Object} caller Referencia al objeto llamante.
          * @param {Boolean} success Si el guardado ha sido exitoso.
          * @param {Microsoft.Office.Interop.Excel.Workbook} workbook Libro de trabajo emisor del evento.
@@ -213,7 +218,7 @@ class ExcelEventController
          * @public
          * Nombre para el evento que ocurre cuando se permite el cierre del libro de trabajo.
          * 
-         * El callback debe implementar los siguientes parámetros:
+         * El `callback` debe implementar los siguientes parámetros:
          * @param {Object} caller Referencia al objeto llamante.
          * @param {Boolean} cancel Falso por defecto, si se establece en Verdadero, 
          * no se permitirá el cierre del libro de trabajo.
@@ -226,7 +231,7 @@ class ExcelEventController
          * @public
          * Nombre para el evento que ocurre cuando se deniega el cierre del libro de trabajo.
          * 
-         * El callback debe implementar los siguientes parámetros:
+         * El `callback` debe implementar los siguientes parámetros:
          * @param {Object} caller Referencia al objeto llamante.
          * @param {Boolean} cancel Falso por defecto, si se establece en Verdadero, 
          * no se permitirá el cierre del libro de trabajo.
@@ -241,7 +246,7 @@ class ExcelEventController
          * 
          * El libro continúa siendo accesible tras guardarlo en formato xlsx.
          * 
-         * El callback debe implementar los siguientes parámetros:
+         * El `callback` debe implementar los siguientes parámetros:
          * @param {Object} caller Referencia al objeto llamante.
          * @param {Boolean} success Si el guardado ha sido exitoso.
          * @param {Microsoft.Office.Interop.Excel.Workbook} workbook Libro de trabajo emisor del evento.
@@ -252,7 +257,7 @@ class ExcelEventController
          * @public
          * Nombre para el evento que ocurre al activar una de las hojas de cálculo del libro de trabajo.
          * 
-         * El callback debe implementar los siguientes parámetros:
+         * El `callback` debe implementar los siguientes parámetros:
          * @param {Object} caller Referencia al objeto llamante.
          * @param {Microsoft.Office.Interop.Excel.Worksheet} sheet Puede ser un Worksheet o un Chart.
          * @param {Microsoft.Office.Interop.Excel.Workbook} workbook Libro de trabajo emisor del evento.
@@ -270,7 +275,7 @@ class ExcelEventController
          * @public
          * Nombre para el evento que ocurre cuando un rango de la hoja sufre un cambio.
          * 
-         * El callback debe implementar los siguientes parámetros:
+         * El `callback` debe implementar los siguientes parámetros:
          * @param {Object} caller Referencia al objeto llamante.
          * @param {Microsoft.Office.Interop.Excel.Range} target Rango modificado.
          * @param {Microsoft.Office.Interop.Excel.Worksheet} worksheet Hoja de cálculo emisora del evento.
@@ -301,7 +306,7 @@ class ExcelEventController
          * @private
          * Ocurre al abrir cualquier libro guardado.
          * 
-         * - Si previamente existe un único libro en blanco, Excel lo cerrará tras unos milisegundos.
+         * @note Si previamente existe un único libro en blanco, Excel lo cerrará tras unos milisegundos.
          * 
          * @param {Microsoft.Office.Interop.Excel.Workbook} workbook Libro de trabajo emisor del evento.
          * @param {Microsoft.Office.Interop.Excel.Application} application Microsoft Excel COM.
@@ -349,8 +354,7 @@ class ExcelEventController
     {
         /**
          * @public
-         * Permitir el cierre del libro de trabajo objetivo.
-         * @type {Boolean} Falso por defecto
+         * {Boolean} Permitir el cierre del libro de trabajo objetivo.
          */
         AllowClosure := false ;
 
@@ -396,7 +400,7 @@ class ExcelEventController
          * @private
          * Ocurre tras finalizar el guardado del libro de trabajo.
          * 
-         * - El libro continúa siendo accesible tras guardarlo en formato xlsx.
+         * @note El libro continúa siendo accesible tras guardarlo en formato xlsx.
          * 
          * @param {Boolean} success Si el guardado ha sido exitoso.
          * @param {Microsoft.Office.Interop.Excel.Workbook} workbook Libro de trabajo emisor del evento.
