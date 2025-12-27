@@ -8,7 +8,6 @@
  * @author bitasuperactive
  * @date 25/12/2025
  * @version 0.9.1-Beta
- * @extends WorkbookWrapper
  * @warning Dependencias:
  * - WorkbookWrapper.ahk
  * - Utils.ahk

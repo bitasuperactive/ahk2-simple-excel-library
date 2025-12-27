@@ -1,16 +1,31 @@
 # Doxyfile 1.15.0
 
 #---------------------------------------------------------------------------
-# AJUSTES PARA AUTOHOTKEY V2 LANGUAGE STUPPORT EXTENSION BY thqby
-
-#FILE_PATTERNS = *.ahk
-#EXTENSION_MAPPING = ahk=C++
-#RECURSIVE = YES
-#EXTRACT_ALL = NO
-#EXTRACT_STATIC = YES
-#EXTRACT_PRIVATE = YES
-#JAVADOC_BANNER = YES
-#JAVADOC_AUTOBRIEF = YES
+# LIMITACIONES DE LA INTEGRACIÓN DE AHK COMO C++
+#
+# En los siguientes tipos no reconoce su delimitación y hay
+# que poner un ';' al final de la definición:
+# - '=>' externos, los internos de funciones no dan problemas
+# - ':='
+# - clases anidadas
+#
+# Tipos incompatibles:
+# - "extends"     Solucionado con PREDEFINED
+# - (*)           Hay que darle nombre (p*)
+# - @type         Definir tipo antes de la descripción: {type} Blablabla
+#---------------------------------------------------------------------------
+# AJUSTES PRINCIPALES
+#
+# FILE_PATTERNS = *.ahk
+# EXTENSION_MAPPING = ahk=C++
+# RECURSIVE = YES
+# EXTRACT_ALL = NO
+# EXTRACT_STATIC = YES
+# EXTRACT_PRIVATE = YES
+# JAVADOC_BANNER = YES
+# JAVADOC_AUTOBRIEF = YES
+# MACRO_EXPANSION = YES
+# PREDEFINED = extends=": public"
 #---------------------------------------------------------------------------
 
 # This file describes the settings to be used by the documentation system
@@ -2535,7 +2550,7 @@ ENABLE_PREPROCESSING   = YES
 # The default value is: NO.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-MACRO_EXPANSION        = NO
+MACRO_EXPANSION        = YES
 
 # If the EXPAND_ONLY_PREDEF and MACRO_EXPANSION tags are both set to YES then
 # the macro expansion is limited to the macros specified with the PREDEFINED and
@@ -2576,7 +2591,7 @@ INCLUDE_FILE_PATTERNS  =
 # recursively expanded use the := operator instead of the = operator.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-PREDEFINED             =
+PREDEFINED             = extends=": public"
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
 # tag can be used to specify a list of macro names that should be expanded. The
