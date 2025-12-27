@@ -47,6 +47,7 @@ class ReadWorkbookAdapter extends WorkbookWrapper
      * @returns {Array<Object>} Colección de objetos literales representativa de la
      * tabla objetivo. Sus atributos corresponden con los encabezados de la tabla.
      * @throws {UnsetError} Si la tabla no contiene alguna de las cabeceras esperadas.
+     * @note Rendimiento: Lee +10.000 datos en <1s.
      */
     ReadTable(expectedHeaders := [])
     {

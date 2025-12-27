@@ -41,11 +41,12 @@ class WriteWorkbookAdapter extends WorkbookWrapper
      * Crea o anexa una tabla, sean solo filas o solo columnas en la hoja de cálculo objetivo.
      * @warning Si utilizas la clase nativa Object para encapsular los datos a introducir, 
      * se impondrá un orden alfabético para la inserción de las columnas.
-     * Se recomienda utilizar OrObject.
+     * @note Se recomienda utilizar OrObject.
      * @param {Array<Object>} objArray Colección de objetos literales.
      * @param {Array<String>} expectedHeaders (Opcional) Colección de los nombres 
      * para las cabeceras requeridas.
      * @throws {UnsetError} Si la tabla no tiene alguna de las cabeceras esperadas.
+     * @note Rendimiento: Escribe +2.000 datos en <1s.
      */
     AppendTable(objArray, expectedHeaders := [])
     {

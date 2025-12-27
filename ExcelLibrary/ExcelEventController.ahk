@@ -79,10 +79,10 @@ class ExcelEventController
 
     /**
      * @public
-     * Crea un evento único para detectar la ejecución y el cierre del proceso Microsoft Excel.
-     * 
-     * @warning Si se establece antes de iniciar el proceso, el evento se dispará dando a entender 
-     * erróneamente que ha finalizado.
+     * Establece un escuchador WMI para detectar la ejecución y el cierre del proceso Microsoft Excel.
+     * @warning Si se ejecuta antes de iniciar el proceso, el evento se dispará varias veces dando a 
+     * entender erróneamente que el proceso ha finalizado.
+     * @throws {Error} Si no ha sido posible establecer el escuchador del proceso.
      */
     static SetupOnApplicationStateChangedEvent()
     {
@@ -91,7 +91,8 @@ class ExcelEventController
                 this._applicationWatcher := ProcessWMIWatcher("EXCEL.EXE", ProcessWMIEventHandler(this._OnApplicationStateChanged))
             }
             catch Error as err {
-                MsgBox("No ha sido posible establecer el escuchador del proceso de Microsoft Excel.`n`nError: " err.Message, "ERROR", 16)
+                throw Error('Debido a un error de WMI, no ha sido posible establecer el escuchador para los eventos "' 
+                    ExcelEventController.ApplicationEventEnum.APPLICATON_EXECUTED  '" y "' ExcelEventController.ApplicationEventEnum.APPLICATON_TERMINATED, -1, err)
             }
         }
     }
@@ -108,9 +109,7 @@ class ExcelEventController
     /**
      * @private
      * Ocurre al iniciar o finalizar el proceso de Microsoft Excel.
-     * 
      * @note El proceso de Excel no finalizará tras cerrar todas sus ventanas si su COM no es liberado.
-     * 
      * @param {Boolean} executed Verdadero si Excel ha sido ejecutado, Falso si ha sido finalizado.
      */
     static _OnApplicationStateChanged(executed)
@@ -127,7 +126,7 @@ class ExcelEventController
     static _Dispose()
     {
         try this._applicationWatcher.Dispose()
-        try this._applicationWatcher := unset
+        try this._applicationWatcher := 0
         this.DisposeEvents()
     }
 
