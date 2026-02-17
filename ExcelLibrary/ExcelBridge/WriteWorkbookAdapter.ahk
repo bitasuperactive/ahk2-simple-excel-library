@@ -33,7 +33,6 @@ class WriteWorkbookAdapter extends WorkbookWrapper
     __New(workbook, targetSheet?)
     {
         super.__New(workbook, targetSheet?)
-        this._DeleteEmptyRows()
     }
 
     /**

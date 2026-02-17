@@ -73,6 +73,7 @@ class WorkbookWrapper
         this._targetSheetName := this._targetSheet.Name
 
         this._WrapTargetRangeInTable()
+        this._NormalizeTableHeaders()
     }
 
     /**
@@ -162,7 +163,7 @@ class WorkbookWrapper
             sheet.Rows[lastHighlightedRow].Interior.Color := BGR_NONE
         }
         sheet.Rows[row].Interior.Color := reset ? BGR_NONE : BGR_HIGHTLIGHT
-        lastHighlightedRow := reset ? 0 : row
+        this.__lastHighlightedRow := reset ? 0 : row
     }
 
     /**
@@ -187,7 +188,7 @@ class WorkbookWrapper
         ;// Normalizar
         for header in expectedHeaders
             expectedHeaders[A_Index] := WorkbookWrapper.__NormalizeHeader(header)
-        this._NormalizeTableHeaders()
+        ;this._NormalizeTableHeaders()
 
         ;// Obtener cabeceras de la tabla
         headerRow := this._GetRowSafeArray(1)
@@ -203,6 +204,24 @@ class WorkbookWrapper
                 missingHeaders.Push(header)
         }
         return missingHeaders.Length = 0
+    }
+
+    /**
+     * @public
+     * Busca una cadena en el rango objetivo y devuelve el número de fila relativa a la primera coincidencia en el rango utilizado.
+     * @param {String} str Cadena a buscar.
+     * @param {Integer} lookAt (Opcional) `1` Buscar coincidencia completa. `2` Buscar coincidencia parcial. Por defecto es `2`.
+     * @param {Integer} matchCase (Opcional) `true` para distinguir mayúsculas de minúsculas, `false` para no distinguir. Por defecto es `false`.
+     * @return {Integer} Número de fila relativa a la posición de la cadena buscada. Devuelve `0` si no se encuentra.
+     */
+    FindString(str, lookAt := 2, matchCase := false)
+    {
+        if (Type(str) != "String")
+            throw TypeError("Se esperaba un String, pero se ha recibido: " Type(str))
+        
+        range := this._GetTargetRange()
+        found := range.Find(str, After:=unset, LookIn:=-4123, lookAt, SearchOrder:=unset, SearchDirection:=unset, matchCase) ; xlFormulas
+        return IsObject(found) ? (found.Row - range.Row + 1) : 0
     }
 
     /**
@@ -237,7 +256,8 @@ class WorkbookWrapper
     }
 
     /**
-     * @protected 
+     * @deprecated En desuso, es una función O(n) muy lenta para libros grandes.
+     * @protected
      * Elimina las filas vacías del rango objetivo (contempla fórmulas).
      * 
      * Las tablas deben contener al menos un valor para auto-expandirse. 
@@ -252,9 +272,10 @@ class WorkbookWrapper
         maxRowCount := rowCount
 
         Loop rowCount {
-            index := maxRowCount - A_Index + 1 ; Orden invertido
+            index := (maxRowCount - A_Index) + 1 ; Orden invertido
             row := rows[index]
             isThereAnyValue := row.Find("*",, xlFormulas:=-4123)
+
             if (!isThereAnyValue) {
                 ;// No se puede borrar la última fila del contenido de una tabla
                 if (index = 2 && rowCount = 2) {
@@ -434,8 +455,7 @@ class WorkbookWrapper
 
     /**
      * @protected 
-     * @deprecated En desuso porque con el rendimiento actual la mejora es 
-     * despreciable.
+     * @deprecated En desuso, la mejora de rendimiento es despreciable.
      * 
      * Desactiva o reactiva las optimizaciones de rendimiento en Excel.
      * Principalmente, mejora el rendimiento de la escritura.
