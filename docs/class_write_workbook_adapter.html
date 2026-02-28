@@ -144,6 +144,8 @@ Métodos públicos</h2></td></tr>
 <tr class="memdesc:a0c357ff49e18a83e970dbd73d3142215 inherit pub_methods_class_workbook_wrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Señala con un color amarillo la fila indicada y restablece la anterior.  <br /></td></tr>
 <tr class="memitem:a1730897a652c56a36359cdee5b0dd803 inherit pub_methods_class_workbook_wrapper" id="r_a1730897a652c56a36359cdee5b0dd803"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_workbook_wrapper.html#a1730897a652c56a36359cdee5b0dd803">ValidateHeaders</a> (expectedHeaders, &amp;missingHeaders :=unset)</td></tr>
 <tr class="memdesc:a1730897a652c56a36359cdee5b0dd803 inherit pub_methods_class_workbook_wrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normaliza las cabeceras de la tabla objetivo y las valida respecto a la colección facilitada.  <br /></td></tr>
+<tr class="memitem:a6e48db02455df645ec51efd71a783ad2 inherit pub_methods_class_workbook_wrapper" id="r_a6e48db02455df645ec51efd71a783ad2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_workbook_wrapper.html#a6e48db02455df645ec51efd71a783ad2">FindString</a> (str, lookAt :=2, matchCase :=false)</td></tr>
+<tr class="memdesc:a6e48db02455df645ec51efd71a783ad2 inherit pub_methods_class_workbook_wrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca una cadena en el rango objetivo y devuelve el número de fila relativa a la primera coincidencia en el rango utilizado.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Métodos privados</h2></td></tr>
@@ -165,7 +167,6 @@ Otros miembros heredados</h2></td></tr>
 <tr class="memitem:a25e2f3d6efbfc1ae3c3858a6c9e3a85d inherit pro_methods_class_workbook_wrapper" id="r_a25e2f3d6efbfc1ae3c3858a6c9e3a85d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_workbook_wrapper.html#a25e2f3d6efbfc1ae3c3858a6c9e3a85d">_LockSheet</a> (lock)</td></tr>
 <tr class="memdesc:a25e2f3d6efbfc1ae3c3858a6c9e3a85d inherit pro_methods_class_workbook_wrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bloquea la hoja de cálculo objetivo impidiendo la modificación y la selección de sus celdas.  <br /></td></tr>
 <tr class="memitem:a00cc985526b7b0d38517663240312eea inherit pro_methods_class_workbook_wrapper" id="r_a00cc985526b7b0d38517663240312eea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_workbook_wrapper.html#a00cc985526b7b0d38517663240312eea">_DeleteEmptyRows</a> ()</td></tr>
-<tr class="memdesc:a00cc985526b7b0d38517663240312eea inherit pro_methods_class_workbook_wrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina las filas vacías del rango objetivo (contempla fórmulas).  <br /></td></tr>
 <tr class="memitem:aad97d9998aa3bee601a763ca7986f91f inherit pro_methods_class_workbook_wrapper" id="r_aad97d9998aa3bee601a763ca7986f91f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_workbook_wrapper.html#aad97d9998aa3bee601a763ca7986f91f">_GetTargetRange</a> ()</td></tr>
 <tr class="memdesc:aad97d9998aa3bee601a763ca7986f91f inherit pro_methods_class_workbook_wrapper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el rango de la primera tabla si existiera, o el rango <b>continuo</b> utilizado.  <br /></td></tr>
 <tr class="memitem:aa01a3dbe57cecbd43bcc081f7457adb3 inherit pro_methods_class_workbook_wrapper" id="r_aa01a3dbe57cecbd43bcc081f7457adb3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_workbook_wrapper.html#aa01a3dbe57cecbd43bcc081f7457adb3">_WrapTargetRangeInTable</a> (hasHeaders :=0)</td></tr>
@@ -314,7 +315,8 @@ _targetSheetName&#160;</td><td class="memItemRight" valign="bottom">:= unset</td
 </div><div class="memdoc">
 
 <p>Crea o anexa una tabla, sean solo filas o solo columnas en la hoja de cálculo objetivo. </p>
-<dl class="section warning"><dt>Atención</dt><dd>Si utilizas la clase nativa Object para encapsular los datos a introducir, se impondrá un orden alfabético para la inserción de las columnas. Se recomienda utilizar <a class="el" href="class_or_object.html" title="Modificación de la clase Object que indexa sus propiedades por orden de creación.">OrObject</a>. </dd></dl>
+<dl class="section warning"><dt>Atención</dt><dd>Si utilizas la clase nativa Object para encapsular los datos a introducir, se impondrá un orden alfabético para la inserción de las columnas. </dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>Se recomienda utilizar <a class="el" href="class_or_object.html" title="Modificación de la clase Object que indexa sus propiedades por orden de creación.">OrObject</a>. </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">{Array&lt;Object&gt;}</td><td>objArray Colección de objetos literales. </td></tr>
@@ -328,6 +330,7 @@ _targetSheetName&#160;</td><td class="memItemRight" valign="bottom">:= unset</td
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Nota</dt><dd>Rendimiento: Escribe +2.000 datos en &lt;1s. </dd></dl>
 
 </div>
 </div>

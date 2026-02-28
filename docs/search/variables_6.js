@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sheet_5factivate_0',['SHEET_ACTIVATE',['../class_excel_event_controller_1_1_workbook_event_enum.html#aa4bbbb790a3bd16a5763464756c1cb84',1,'ExcelEventController::WorkbookEventEnum']]]
+  ['writeworkbookadapter_0',['WriteWorkbookAdapter',['../class_excel_manager.html#a581b5b5779434dd5838102ddca10e985',1,'ExcelManager']]]
 ];

@@ -134,6 +134,8 @@ Métodos públicos</h2></td></tr>
 <tr class="memdesc:a0c357ff49e18a83e970dbd73d3142215"><td class="mdescLeft">&#160;</td><td class="mdescRight">Señala con un color amarillo la fila indicada y restablece la anterior.  <br /></td></tr>
 <tr class="memitem:a1730897a652c56a36359cdee5b0dd803" id="r_a1730897a652c56a36359cdee5b0dd803"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1730897a652c56a36359cdee5b0dd803">ValidateHeaders</a> (expectedHeaders, &amp;missingHeaders :=unset)</td></tr>
 <tr class="memdesc:a1730897a652c56a36359cdee5b0dd803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normaliza las cabeceras de la tabla objetivo y las valida respecto a la colección facilitada.  <br /></td></tr>
+<tr class="memitem:a6e48db02455df645ec51efd71a783ad2" id="r_a6e48db02455df645ec51efd71a783ad2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e48db02455df645ec51efd71a783ad2">FindString</a> (str, lookAt :=2, matchCase :=false)</td></tr>
+<tr class="memdesc:a6e48db02455df645ec51efd71a783ad2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca una cadena en el rango objetivo y devuelve el número de fila relativa a la primera coincidencia en el rango utilizado.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Atributos públicos</h2></td></tr>
@@ -151,7 +153,6 @@ Métodos protegidos</h2></td></tr>
 <tr class="memitem:a25e2f3d6efbfc1ae3c3858a6c9e3a85d" id="r_a25e2f3d6efbfc1ae3c3858a6c9e3a85d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25e2f3d6efbfc1ae3c3858a6c9e3a85d">_LockSheet</a> (lock)</td></tr>
 <tr class="memdesc:a25e2f3d6efbfc1ae3c3858a6c9e3a85d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bloquea la hoja de cálculo objetivo impidiendo la modificación y la selección de sus celdas.  <br /></td></tr>
 <tr class="memitem:a00cc985526b7b0d38517663240312eea" id="r_a00cc985526b7b0d38517663240312eea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00cc985526b7b0d38517663240312eea">_DeleteEmptyRows</a> ()</td></tr>
-<tr class="memdesc:a00cc985526b7b0d38517663240312eea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina las filas vacías del rango objetivo (contempla fórmulas).  <br /></td></tr>
 <tr class="memitem:aad97d9998aa3bee601a763ca7986f91f" id="r_aad97d9998aa3bee601a763ca7986f91f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad97d9998aa3bee601a763ca7986f91f">_GetTargetRange</a> ()</td></tr>
 <tr class="memdesc:aad97d9998aa3bee601a763ca7986f91f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el rango de la primera tabla si existiera, o el rango <b>continuo</b> utilizado.  <br /></td></tr>
 <tr class="memitem:aa01a3dbe57cecbd43bcc081f7457adb3" id="r_aa01a3dbe57cecbd43bcc081f7457adb3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa01a3dbe57cecbd43bcc081f7457adb3">_WrapTargetRangeInTable</a> (hasHeaders :=0)</td></tr>
@@ -444,8 +445,9 @@ __lastHighlightedRow&#160;</td><td class="memItemRight" valign="bottom">:= 0</td
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Elimina las filas vacías del rango objetivo (contempla fórmulas). </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Obsoleto</a></b></dt><dd><p class="startdd">En desuso, es una función O(n) muy lenta para libros grandes.</p>
+<p class="enddd">Elimina las filas vacías del rango objetivo (contempla fórmulas).</p>
+</dd></dl>
 <p>Las tablas deben contener al menos un valor para auto-expandirse. Por ello, si la tabla carece de contenido, se rellenará la primera fila con el valor "null". </p>
 
 </div>
@@ -681,7 +683,7 @@ __lastHighlightedRow&#160;</td><td class="memItemRight" valign="bottom">:= 0</td
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Obsoleto</a></b></dt><dd>En desuso porque con el rendimiento actual la mejora es despreciable.</dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Obsoleto</a></b></dt><dd>En desuso, la mejora de rendimiento es despreciable.</dd></dl>
 <p>Desactiva o reactiva las optimizaciones de rendimiento en Excel. Principalmente, mejora el rendimiento de la escritura.</p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
@@ -728,6 +730,51 @@ __lastHighlightedRow&#160;</td><td class="memItemRight" valign="bottom">:= 0</td
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a6e48db02455df645ec51efd71a783ad2" name="a6e48db02455df645ec51efd71a783ad2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e48db02455df645ec51efd71a783ad2">&#9670;&#160;</a></span>FindString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">WorkbookWrapper::FindString </td>
+          <td>(</td>
+          <td class="paramtype">str</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">lookAt :</td>          <td class="paramname"><span class="paramname"><em></em></span><span class="paramdefsep"> = </span><span class="paramdefval">2</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">matchCase :</td>          <td class="paramname"><span class="paramname"><em></em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Busca una cadena en el rango objetivo y devuelve el número de fila relativa a la primera coincidencia en el rango utilizado. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">{String}</td><td>str Cadena a buscar. </td></tr>
+    <tr><td class="paramname">{Integer}</td><td>lookAt (Opcional) <span class="tt">1</span> Buscar coincidencia completa. <span class="tt">2</span> Buscar coincidencia parcial. Por defecto es <span class="tt">2</span>. </td></tr>
+    <tr><td class="paramname">{Integer}</td><td>matchCase (Opcional) <span class="tt">true</span> para distinguir mayúsculas de minúsculas, <span class="tt">false</span> para no distinguir. Por defecto es <span class="tt">false</span>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>{Integer} Número de fila relativa a la posición de la cadena buscada. Devuelve <span class="tt">0</span> si no se encuentra. </dd></dl>
 
 </div>
 </div>

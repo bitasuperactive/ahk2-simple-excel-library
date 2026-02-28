@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readworkbookadapter_0',['ReadWorkbookAdapter',['../class_excel_manager.html#ae5e6a0c58e107ea46b1af81464a914e0',1,'ExcelManager']]]
+  ['targetsheetname_0',['TargetSheetName',['../class_workbook_wrapper.html#a7618f9d3b5a8b81ab53373671a8062a2',1,'WorkbookWrapper']]]
 ];

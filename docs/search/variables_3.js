@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['msgbox_5ftopmost_5fopt_0',['MSGBOX_TOPMOST_OPT',['../class_utils.html#af55b64b7368792e3dc97ce19c7c1e290',1,'Utils']]]
+  ['name_0',['Name',['../class_workbook_wrapper.html#ad5f317fd591c1330ea83d8811e55ef94',1,'WorkbookWrapper']]]
 ];

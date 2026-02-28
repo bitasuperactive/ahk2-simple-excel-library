@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name_0',['Name',['../class_workbook_wrapper.html#ad5f317fd591c1330ea83d8811e55ef94',1,'WorkbookWrapper']]]
+  ['readworkbookadapter_0',['ReadWorkbookAdapter',['../class_excel_manager.html#ae5e6a0c58e107ea46b1af81464a914e0',1,'ExcelManager']]]
 ];

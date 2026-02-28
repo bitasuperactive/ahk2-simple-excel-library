@@ -1,7 +1,6 @@
 var annotated_dup =
 [
     [ "EventController", "class_event_controller.html", "class_event_controller" ],
-    [ "ExcelEventController", "class_excel_event_controller.html", "class_excel_event_controller" ],
     [ "ExcelManager", "class_excel_manager.html", "class_excel_manager" ],
     [ "OrObject", "class_or_object.html", "class_or_object" ],
     [ "ProcessWMIWatcher", "class_process_w_m_i_watcher.html", "class_process_w_m_i_watcher" ],

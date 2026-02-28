@@ -14,6 +14,7 @@ var class_workbook_wrapper =
     [ "_NormalizeTableHeaders", "class_workbook_wrapper.html#acd4fc4a424ed5f0655b222db84fc28cf", null ],
     [ "_SpeedupIO", "class_workbook_wrapper.html#ac58c96ff3eab1d7f974fc00e19306528", null ],
     [ "_WrapTargetRangeInTable", "class_workbook_wrapper.html#aa01a3dbe57cecbd43bcc081f7457adb3", null ],
+    [ "FindString", "class_workbook_wrapper.html#a6e48db02455df645ec51efd71a783ad2", null ],
     [ "GetColumnCount", "class_workbook_wrapper.html#a7158cb93cf3f0440143373d25b3f4fbf", null ],
     [ "GetRowCount", "class_workbook_wrapper.html#a9dbfb18dc28d802a790f0114b0bd3040", null ],
     [ "HighlightRow", "class_workbook_wrapper.html#a0c357ff49e18a83e970dbd73d3142215", null ],

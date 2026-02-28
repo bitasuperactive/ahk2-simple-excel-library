@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['connectiontypeenum_0',['ConnectionTypeEnum',['../class_excel_manager_1_1_connection_type_enum.html',1,'ExcelManager']]]
+  ['orobject_0',['OrObject',['../class_or_object.html',1,'']]]
 ];
