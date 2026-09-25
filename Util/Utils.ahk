@@ -5,7 +5,7 @@
  * @author bitasuperactive
  * @date 26/12/2025
  * @version 1.0.2
- * @see https://github.com/bitasuperactive/ahk2-excel-library/blob/master/Util/Utils.ahk
+ * @see https://github.com/bitasuperactive/ahk2-simple-excel-library/blob/master/Util/Utils.ahk
  ***********************************************************************/
 class Utils
 {
@@ -60,12 +60,8 @@ class Utils
      */
     static EscapeExcelEditMode()
     {
-        activeWinHwnd := WinGetID("A")
-        activeWbHwnd := WinGetID("ahk_class XLMAIN") ; Última ventana activa de Excel
-        WinActivate(activeWbHwnd)
-        WinWaitActive(activeWbHwnd,, 2)
-        Send("{Escape}")
-        WinActivate(activeWinHwnd)
+        hwnd := WinGetID("ahk_class XLMAIN") ; Última ventana activa de Excel
+        ControlSend("{Esc}",, "ahk_id " hwnd)
     }
 
     /**

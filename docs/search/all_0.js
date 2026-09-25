@@ -2,7 +2,7 @@ var searchData=
 [
   ['_5f_5finvokeexcelsafely_0',['__InvokeExcelSafely',['../class_excel_manager.html#a385dbc42b486236465879f2678ce9ecb',1,'ExcelManager']]],
   ['_5f_5finvokeexcelsafelydelayed_1',['__InvokeExcelSafelyDelayed',['../class_workbook_wrapper.html#a81bd8467ce6fde337f8209e935b5a3be',1,'WorkbookWrapper']]],
-  ['_5f_5fnew_2',['__New',['../class_read_workbook_adapter.html#abcd8ddbfd0b365589845483234a48f3a',1,'ReadWorkbookAdapter::__New()'],['../class_workbook_wrapper.html#ab7a2ca2755e458b752f760dbfd04706c',1,'WorkbookWrapper::__New()'],['../class_write_workbook_adapter.html#a328c461e711bdf92ec75b0978436e637',1,'WriteWorkbookAdapter::__New()'],['../class_excel_manager.html#a07d0916d649d6c37ef99d6ea4d16bb6c',1,'ExcelManager::__New()'],['../class_or_object.html#a6646ec0c8b308531dbc5e076735e2ecd',1,'OrObject::__New()'],['../class_process_w_m_i_watcher.html#ad3b9de82eba5ede9d2d03eb1fe5dabe0',1,'ProcessWMIWatcher::__New()']]],
+  ['_5f_5fnew_2',['__New',['../class_read_workbook_adapter.html#abcd8ddbfd0b365589845483234a48f3a',1,'ReadWorkbookAdapter::__New()'],['../class_workbook_wrapper.html#ab7a2ca2755e458b752f760dbfd04706c',1,'WorkbookWrapper::__New()'],['../class_write_workbook_adapter.html#a328c461e711bdf92ec75b0978436e637',1,'WriteWorkbookAdapter::__New()'],['../class_excel_manager.html#a07d0916d649d6c37ef99d6ea4d16bb6c',1,'ExcelManager::__New()'],['../class_or_object.html#a6646ec0c8b308531dbc5e076735e2ecd',1,'OrObject::__New()'],['../class_process_w_m_i_watcher.html#a67c09c54e07b71624e06fbd2f58d6811',1,'ProcessWMIWatcher::__New()'],['../class_process_w_m_i_watcher_1_1___process_w_m_i_event_handler.html#a0b411b322763943f0d3159a24dc41bf7',1,'ProcessWMIWatcher::_ProcessWMIEventHandler::__New()']]],
   ['_5f_5fnormalizeheader_3',['__NormalizeHeader',['../class_workbook_wrapper.html#a54b0643a052324550d445d858f86b01e',1,'WorkbookWrapper']]],
   ['_5f_5fontargetworkbookbeforeclose_4',['__OnTargetWorkbookBeforeClose',['../class_excel_manager.html#a4d068ed8128a2bba801a7d147328a086',1,'ExcelManager']]],
   ['_5f_5fpad0_5f_5f_5',['__pad0__',['../class_or_object.html#a587207d90543b8235d852364165f9dc7',1,'OrObject']]],
@@ -21,8 +21,9 @@ var searchData=
   ['_5flockworkbook_18',['_LockWorkbook',['../class_workbook_wrapper.html#a2b231fa8a630ee57e444d3c296492305',1,'WorkbookWrapper::_LockWorkbook()'],['../class_excel_manager.html#ad7b564977b3c78c7768c54566c0010b5',1,'ExcelManager::_LockWorkbook()']]],
   ['_5fnormalizeobjprops_19',['_NormalizeObjProps',['../class_workbook_wrapper.html#ae93655aa2538003378829c535ed3b78a',1,'WorkbookWrapper']]],
   ['_5fnormalizetableheaders_20',['_NormalizeTableHeaders',['../class_workbook_wrapper.html#acd4fc4a424ed5f0655b222db84fc28cf',1,'WorkbookWrapper']]],
-  ['_5fsameadapterforreadandwrite_21',['_SameAdapterForReadAndWrite',['../class_excel_manager.html#ab83077837a5f2d970c9c8497b8329840',1,'ExcelManager']]],
-  ['_5fsetworkbookadapter_22',['_SetWorkbookAdapter',['../class_excel_manager.html#a507bf2e81b2bf094a870084060d674e7',1,'ExcelManager']]],
-  ['_5fspeedupio_23',['_SpeedupIO',['../class_workbook_wrapper.html#ac58c96ff3eab1d7f974fc00e19306528',1,'WorkbookWrapper']]],
-  ['_5fwraptargetrangeintable_24',['_WrapTargetRangeInTable',['../class_workbook_wrapper.html#aa01a3dbe57cecbd43bcc081f7457adb3',1,'WorkbookWrapper']]]
+  ['_5fprocesswmieventhandler_21',['_ProcessWMIEventHandler',['../class_process_w_m_i_watcher_1_1___process_w_m_i_event_handler.html',1,'ProcessWMIWatcher']]],
+  ['_5fsameadapterforreadandwrite_22',['_SameAdapterForReadAndWrite',['../class_excel_manager.html#ab83077837a5f2d970c9c8497b8329840',1,'ExcelManager']]],
+  ['_5fsetworkbookadapter_23',['_SetWorkbookAdapter',['../class_excel_manager.html#a507bf2e81b2bf094a870084060d674e7',1,'ExcelManager']]],
+  ['_5fspeedupio_24',['_SpeedupIO',['../class_workbook_wrapper.html#ac58c96ff3eab1d7f974fc00e19306528',1,'WorkbookWrapper']]],
+  ['_5fwraptargetrangeintable_25',['_WrapTargetRangeInTable',['../class_workbook_wrapper.html#aa01a3dbe57cecbd43bcc081f7457adb3',1,'WorkbookWrapper']]]
 ];

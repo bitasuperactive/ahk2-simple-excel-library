@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_20clases_20esenciales_0',['Métodos y clases esenciales',['../index.html#autotoc_md3',1,'']]]
+  ['¡pruébalo_20en_20tu_20script_0',['¡Pruébalo en tu script',['../index.html#autotoc_md3',1,'🚀 ¡Pruébalo en tu script!'],['../C:/Users/PVita/OneDrive/Development/Windows/Scripts/AutoHotKey/EXCEL & CHROME/README.md#autotoc_md14',1,'🚀 ¡Pruébalo en tu script!']]]
 ];

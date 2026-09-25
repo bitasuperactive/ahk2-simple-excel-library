@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['validateheaders_0',['ValidateHeaders',['../class_workbook_wrapper.html#a1730897a652c56a36359cdee5b0dd803',1,'WorkbookWrapper']]],
-  ['validateinheritance_1',['ValidateInheritance',['../class_utils.html#aa6164cfa8395213289f42f49ffe330a3',1,'Utils']]],
-  ['validateinheritanceclass_2',['ValidateInheritanceClass',['../class_utils.html#afb53176895584ef8b55071d68b242972',1,'Utils']]]
+  ['workbookwrapper_0',['WorkbookWrapper',['../class_workbook_wrapper.html',1,'']]],
+  ['write_1',['WRITE',['../class_excel_manager_1_1_connection_type_enum_1_1_w_r_i_t_e.html',1,'ExcelManager::ConnectionTypeEnum']]],
+  ['writeworkbookadapter_2',['WriteWorkbookAdapter',['../index.html#autotoc_md9',1,'&lt;a class=&quot;el&quot; href=&quot;class_write_workbook_adapter.html&quot;&gt;WriteWorkbookAdapter&lt;/a&gt;'],['../class_write_workbook_adapter.html',1,'WriteWorkbookAdapter'],['../class_excel_manager.html#a581b5b5779434dd5838102ddca10e985',1,'ExcelManager::WriteWorkbookAdapter']]],
+  ['writeworkbookadapter_20writeworkbookadapter_3',['&lt;a class=&quot;el&quot; href=&quot;class_write_workbook_adapter.html&quot;&gt;WriteWorkbookAdapter&lt;/a&gt;',['../index.html#autotoc_md9',1,'']]]
 ];

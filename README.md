@@ -27,7 +27,10 @@ Aquí no encontrarás una integración completa.
 <br/>Se recomienda utilizar una hoja de cálculo para leer y otra para escribir, y una vez procesada toda la información requerida de las fuentes externas, se portaría manualmente a la hoja de cálculo principal. 
 Esta funcionalidad es opcional, pero añade una capa extra de seguridad.
 
-## Ejemplo básico
+## Aplicación de ejemplo
+Se ha añadido el script "ExampleExcelApp.ahk" para que podáis testear la librería directamente.
+
+## Inicio rápido
 
 Dependencias (OrObject es opcional):
 
@@ -97,4 +100,4 @@ Una vez hemos terminado de trabajar con los libros, podemos desconectarlos expl�
 
 #### 🚀 ¡Pruébalo en tu script!
 
-Hala, y ahora arremete sin miedo contra la [documentación de clases](https://bitasuperactive.github.io/ahk2-simple-excel-library/annotated.html). Ha sido escrita con mimo y es muy sencillita, espero que te sirva 😉.
+Ahora arremete sin miedo contra la [documentación de clases](https://bitasuperactive.github.io/ahk2-simple-excel-library/annotated.html). Ha sido escrita con mimo y es muy sencilla, espero que te sea útil 🤝.

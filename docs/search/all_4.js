@@ -1,10 +1,14 @@
 var searchData=
 [
-  ['de_20obsoletos_0',['Lista de obsoletos',['../deprecated.html',1,'']]],
-  ['defineprop_1',['DefineProp',['../class_or_object.html#a2c8eccea7af66230385252798e02040e',1,'OrObject']]],
-  ['deleteprop_2',['DeleteProp',['../class_or_object.html#a1878f804c2a295a39cb6d428538a61f9',1,'OrObject']]],
-  ['deleterow_3',['DeleteRow',['../class_write_workbook_adapter.html#ad049b95caa6c2a9f7eb4700434903f34',1,'WriteWorkbookAdapter']]],
-  ['deletetable_4',['DeleteTable',['../class_write_workbook_adapter.html#ad772bcc19e4026ab08fa6983419ad6ee',1,'WriteWorkbookAdapter']]],
-  ['disconnectworkbook_5',['DisconnectWorkbook',['../class_excel_manager.html#a93ae766d8728c47dba43fd372d3cdd16',1,'ExcelManager']]],
-  ['dispose_6',['Dispose',['../class_excel_manager.html#a6bbd5d1697927ae31ea1f1f65f45a1d3',1,'ExcelManager::Dispose()'],['../class_event_controller.html#a4005adb6e59bf316ee10633f230d581c',1,'EventController::Dispose()'],['../class_process_w_m_i_watcher.html#aa2578a345116cf9b11b6d2219c692782',1,'ProcessWMIWatcher::Dispose()']]]
+  ['ejemplo_0',['ejemplo',['../index.html#autotoc_md1',1,'Aplicación de ejemplo'],['../C:/Users/PVita/OneDrive/Development/Windows/Scripts/AutoHotKey/EXCEL & CHROME/README.md#autotoc_md12',1,'Aplicación de ejemplo']]],
+  ['en_20tu_20script_1',['en tu script',['../index.html#autotoc_md3',1,'🚀 ¡Pruébalo en tu script!'],['../C:/Users/PVita/OneDrive/Development/Windows/Scripts/AutoHotKey/EXCEL & CHROME/README.md#autotoc_md14',1,'🚀 ¡Pruébalo en tu script!']]],
+  ['escapeexceleditmode_2',['EscapeExcelEditMode',['../class_utils.html#aa2408d8168c1f377ae1357dc613618c8',1,'Utils']]],
+  ['esenciales_3',['Métodos y clases esenciales',['../index.html#autotoc_md4',1,'']]],
+  ['eventcontroller_4',['EventController',['../class_event_controller.html',1,'']]],
+  ['events_5',['Events',['../class_event_controller.html#af45687c8b68986963276cdb5d0025aeb',1,'EventController']]],
+  ['excelmanager_6',['ExcelManager',['../index.html#autotoc_md5',1,'&lt;a class=&quot;el&quot; href=&quot;class_excel_manager.html#a07d0916d649d6c37ef99d6ea4d16bb6c&quot;&gt;ExcelManager&lt;/a&gt;'],['../class_excel_manager.html',1,'ExcelManager']]],
+  ['excelmanager_3a_3a_5f_5fnew_20excelmanager_7',['&lt;a class=&quot;el&quot; href=&quot;class_excel_manager.html#a07d0916d649d6c37ef99d6ea4d16bb6c&quot;&gt;ExcelManager&lt;/a&gt;',['../index.html#autotoc_md5',1,'']]],
+  ['excelmanager_3a_3aconnectiontypeenum_20connectiontypeenum_8',['&lt;a class=&quot;el&quot; href=&quot;class_excel_manager_1_1_connection_type_enum.html&quot;&gt;ConnectionTypeEnum&lt;/a&gt;',['../index.html#autotoc_md7',1,'']]],
+  ['excelmanager_3a_3aconnectworkbookbyname_20connectworkbookbyname_9',['&lt;a class=&quot;el&quot; href=&quot;class_excel_manager.html#abfb5fe1f21c3e0b74503bb2549b52d63&quot;&gt;ConnectWorkbookByName&lt;/a&gt;',['../index.html#autotoc_md8',1,'']]],
+  ['excelmanager_3a_3agetallopenworkbooksnames_20getallopenworkbooksnames_10',['&lt;a class=&quot;el&quot; href=&quot;class_excel_manager.html#a49df73ffe2bd949188203e876c6bcb56&quot;&gt;GetAllOpenWorkbooksNames&lt;/a&gt;',['../index.html#autotoc_md6',1,'']]]
 ];

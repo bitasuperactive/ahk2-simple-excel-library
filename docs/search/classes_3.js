@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['processwmiwatcher_0',['ProcessWMIWatcher',['../class_process_w_m_i_watcher.html',1,'']]]
+  ['orobject_0',['OrObject',['../class_or_object.html',1,'']]]
 ];
