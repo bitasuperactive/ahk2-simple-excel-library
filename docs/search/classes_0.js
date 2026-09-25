@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['connectiontypeenum_0',['ConnectionTypeEnum',['../class_excel_manager_1_1_connection_type_enum.html',1,'ExcelManager']]]
+  ['_5fprocesswmieventhandler_0',['_ProcessWMIEventHandler',['../class_process_w_m_i_watcher_1_1___process_w_m_i_event_handler.html',1,'ProcessWMIWatcher']]]
 ];

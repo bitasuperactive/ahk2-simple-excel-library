@@ -11,7 +11,7 @@
  * @warning Dependencias:
  * - WorkbookWrapper.ahk
  * - Utils.ahk
- * @see https://github.com/bitasuperactive/ahk2-excel-library/blob/master/ExcelLibrary/ExcelBridge/WriteWorkbookAdapter.ahk
+ * @see https://github.com/bitasuperactive/ahk2-simple-excel-library/blob/master/ExcelLibrary/ExcelBridge/WriteWorkbookAdapter.ahk
  ***********************************************************************/
 class WriteWorkbookAdapter extends WorkbookWrapper
 {

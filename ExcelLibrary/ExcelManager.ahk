@@ -27,16 +27,16 @@
  * - La validación de tipos perjudica el rendimiento.
  * 
  * @author bitasuperactive
- * @date 25/12/2025
- * @version 0.9.2-Beta
+ * @date 25/09/2026
+ * @version 0.9.3-Beta
  * @warning Dependencias:
  * - ExcelEventController.ahk
  * - WorkbookWrapper.ahk
  * - ReadWorkbookAdapter.ahk
  * - WriteWorkbookAdapter.ahk
  * - Utils.ahk
- * @see https://github.com/bitasuperactive/ahk2-excel-library/blob/master/ExcelLibrary/ExcelManager.ahk
- * @internal Documentación web: https://bitasuperactive.github.io/ahk2-excel-library
+ * @see https://github.com/bitasuperactive/ahk2-simple-excel-library/blob/master/ExcelLibrary/ExcelManager.ahk
+ * @internal Documentación web: https://bitasuperactive.github.io/ahk2-simple-excel-library
  ***********************************************************************/
 class ExcelManager
 {
@@ -317,15 +317,8 @@ class ExcelManager
         if (!Utils.ValidateInheritance(adapter, WorkbookWrapper))
             throw TypeError('Se esperaba una clase heredada de "' WorkbookWrapper.Prototype.__Class '", pero se ha recibido: ' Type(adapter))
         
-        try {
-            ;// Comprobar si Excel es accesible
-            this._excelCOM.Application.Ready
-        }
-        catch Error as err {
-            ;// Si Excel está ocupado, escapar la edición directamente
-            if (InStr(err.Message, "0x80004002") || InStr(err.Message, "0x80010001") || InStr(err.Message, "0x800AC472"))
-                Utils.EscapeExcelEditMode()
-        }
+        ;// Comprobar si Excel es accesible, si no lo es, mandará `Esc` a través de `__InvokeExcelSafely`.
+        this._excelCOM.Application.Ready
 
         __DisconnectSheet()
         this._LockWorkbook(adapter, false)
@@ -371,16 +364,20 @@ class ExcelManager
     {
         try {
             if (!ProcessExist("EXCEL.EXE") || WinGetCount("ahk_class XLMAIN") = 0) {  ; Ventana activa de Excel
-                Run("EXCEL.EXE /e")
+                ;// (!) Esta opción no reconoce los libros guardados al igual que `Run("EXCEL.EXE /e")`.
+                ; excelCOM := ComObject("Excel.Application")
+                ; excelCOM.Workbooks.Add()
+                ; excelCOM.Visible := true
+                ; WinActivate("ahk_id " excelCOM.Hwnd)
+
+                Run("EXCEL.EXE")
                 excelHwnd := WinWait("ahk_class XLMAIN",, 10)
                 
                 ;// Asegurar el foco en Excel
                 WinActivate(excelHwnd)
-                WinWaitActive(excelHwnd,, 1)
                 ;// Quitar el foco para permitir la creación del COM
                 taskbarHwnd := WinGetID("ahk_class Shell_TrayWnd")
                 WinActivate(taskbarHwnd)
-                WinWaitActive(taskbarHwnd,, 1)
                 ;// Devolver el foco por coherencia
                 WinActivate(excelHwnd)
             }

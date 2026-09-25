@@ -17,7 +17,7 @@
  * - WorkbookWrapper.ahk
  * - OrObject.ahk
  * - Utils.ahk
- * @see https://github.com/bitasuperactive/ahk2-excel-library/blob/master/ExcelLibrary/ExcelBridge/ReadWorkbookAdapter.ahk
+ * @see https://github.com/bitasuperactive/ahk2-simple-excel-library/blob/master/ExcelLibrary/ExcelBridge/ReadWorkbookAdapter.ahk
  ***********************************************************************/
 class ReadWorkbookAdapter extends WorkbookWrapper
 {

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['eventcontroller_0',['EventController',['../class_event_controller.html',1,'']]],
-  ['excelmanager_1',['ExcelManager',['../class_excel_manager.html',1,'']]]
+  ['connectiontypeenum_0',['ConnectionTypeEnum',['../class_excel_manager_1_1_connection_type_enum.html',1,'ExcelManager']]]
 ];

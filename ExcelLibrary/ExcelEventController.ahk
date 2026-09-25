@@ -21,7 +21,7 @@
  * - ProcessWMI.ahk
  * @note Faltan numerosos eventos por implementar, pero los más importantes 
  * están cubiertos.
- * @see https://github.com/bitasuperactive/ahk2-excel-library/blob/master/ExcelLibrary/ExcelEventController.ahk
+ * @see https://github.com/bitasuperactive/ahk2-simple-excel-library/blob/master/ExcelLibrary/ExcelEventController.ahk
  ***********************************************************************/
 class ExcelEventController
 {
@@ -88,7 +88,7 @@ class ExcelEventController
     {
         if (!this._applicationWatcher) {
             try {
-                this._applicationWatcher := ProcessWMIWatcher("EXCEL.EXE", ProcessWMIEventHandler(this._OnApplicationStateChanged))
+                this._applicationWatcher := ProcessWMIWatcher("EXCEL.EXE", (_, state) => this._OnApplicationStateChanged(state))
             }
             catch Error as err {
                 throw Error('Debido a un error de WMI, no ha sido posible establecer el escuchador para los eventos "' 

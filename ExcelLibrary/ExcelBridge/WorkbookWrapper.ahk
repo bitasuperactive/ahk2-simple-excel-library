@@ -15,7 +15,7 @@
  * @version 0.9.1-Beta
  * @warning Dependencias:
  * - Utils.ahk
- * @see https://github.com/bitasuperactive/ahk2-excel-library/blob/master/ExcelLibrary/ExcelBridge/WorkbookWrapper.ahk
+ * @see https://github.com/bitasuperactive/ahk2-simple-excel-library/blob/master/ExcelLibrary/ExcelBridge/WorkbookWrapper.ahk
  ***********************************************************************/
 class WorkbookWrapper
 {

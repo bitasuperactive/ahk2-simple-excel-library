@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "ProcessWMIWatcher::_ProcessWMIEventHandler", "class_process_w_m_i_watcher_1_1___process_w_m_i_event_handler.html", null ],
     [ "ExcelManager::ConnectionTypeEnum", "class_excel_manager_1_1_connection_type_enum.html", null ],
     [ "EventController", "class_event_controller.html", null ],
     [ "ExcelManager", "class_excel_manager.html", null ],

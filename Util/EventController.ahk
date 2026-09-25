@@ -5,7 +5,7 @@
  * @author bitasuperactive
  * @date 25/12/2025
  * @version 1.0.1
- * @see https://github.com/bitasuperactive/ahk2-excel-library/blob/master/Util/EventController.ahk
+ * @see https://github.com/bitasuperactive/ahk2-simple-excel-library/blob/master/Util/EventController.ahk
  ***********************************************************************/
 class EventController
 {
